@@ -30,7 +30,7 @@ def homepage():
     # """
    
    
-@app.route('/spain')
+@app.route('/spain') 
 def homepage_spain():
 
     the_time = datetime.now().strftime("%A, %d %b %Y %H:%M")
