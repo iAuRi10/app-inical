@@ -35,5 +35,6 @@ def homepage_spain():
     # Render HTML with variable
     return render_template("index.html", the_time=the_time, tema="spain")
 
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
