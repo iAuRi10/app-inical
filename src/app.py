@@ -17,7 +17,7 @@ def homepage():
     the_time = datetime.now().strftime("%A, %d %b %Y %H:%M")
 
     # Render HTML with variable
-    return render_template("index.html", the_time=the_time, tema="cats" )
+    return render_template("index.html", the_time=the_time, tema="New York" )
 
     # return f"""
     # <h1>Hello heroku</h1>
@@ -35,4 +35,4 @@ def homepage_spain():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)  
+    app.run(debug=True, use_reloader=True) 
