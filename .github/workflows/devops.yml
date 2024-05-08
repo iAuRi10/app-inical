@@ -61,3 +61,14 @@ jobs:
             docker stop web && docker rm web
             docker rmi aurii/galeria
             docker run -d -p 80:5000 --name web aurii/galeria
+
+  health_check_job:
+    runs-on: ubuntu-latest
+    name: Check for status 200 and title text "lokerse.dev"
+    steps:
+      - uses: actions/checkout@v2
+      - id: test
+        uses: johnlokerse/website-healthcheck@v2
+        with:
+          web-url: "http://3.85.30.237/"
+          scan-for-text: "Hello from Flask App!"
