@@ -18,7 +18,7 @@ def homepage():
     the_time = datetime.now().strftime("%A, %d %b %Y %H:%M")
 
     # Render HTML with variable
-    return render_template("index.html", the_time=the_time, tema="NewYork")
+    return render_template("index.html", the_time=the_time, tema="HongKong")
 
     # return f"""
     # <h1>Hello heroku</h1>
