@@ -1,4 +1,4 @@
-name: flake8 Lint
+name: Devops
 
 on:
   push:
@@ -54,10 +54,22 @@ jobs:
       with:
         host: ${{ secrets.AWS_HOSTNAME }}
         username: ${{ secrets.AWS_USERNAME }}
-        key: ${{ secrets.AWS_PRIVATE_KEY }}
+        key: ${{ secrets.AWS_PRIVATEKEY }}
         port: 22  # ${{ secrets.PORT }}
         script: |
             sleep 60
             docker stop web && docker rm web
             docker rmi aurii/galeria
             docker run -d -p 80:5000 --name web aurii/galeria
+
+  health_check_job:
+    runs-on: ubuntu-latest
+    name: Check for status 200 and title text "lokerse.dev"
+    needs: aws
+    steps:
+      - uses: actions/checkout@v2
+      - id: test
+        uses: johnlokerse/website-healthcheck@v2
+        with:
+          web-url: "http://3.85.30.237/"
+          scan-for-text: "Hello from Flask App!"
